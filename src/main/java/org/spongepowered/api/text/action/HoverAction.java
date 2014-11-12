@@ -25,7 +25,7 @@
 package org.spongepowered.api.text.action;
 
 import org.spongepowered.api.entity.Entity;
-import org.spongepowered.api.item.ItemType;
+import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.text.Message;
 
 public class HoverAction<R> extends TextAction<R> {
@@ -41,9 +41,9 @@ public class HoverAction<R> extends TextAction<R> {
         }
     }
 
-    public static class ShowItem extends HoverAction<ItemType> {
+    public static class ShowItem extends HoverAction<ItemStack> {
 
-        ShowItem(ItemType result) {
+        ShowItem(ItemStack result) {
             super("show_item", result);
         }
 
