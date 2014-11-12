@@ -43,9 +43,10 @@ public interface MessageBuilder {
 
     MessageBuilder insertion(String insertion);
 
-    <V> MessageBuilder clickAction(ClickAction<V> clickAction);
-
-    <V> MessageBuilder hoverAction(HoverAction<V> hoverAction);
+    MessageBuilder onClick(ClickAction<?> action);
+    <R, T extends ClickAction<R>> MessageBuilder onClick(Class<T> type, R result);
+    MessageBuilder onHover(HoverAction<?> action);
+    <R, T extends HoverAction<R>> MessageBuilder onHover(Class<T> type, R result);
 
     MessageBuilder translation(Translation translation);
 
