@@ -52,5 +52,5 @@ public interface Message<T> extends Iterable<Message<T>> {
         Optional<String> getOverride();
     }
     // TODO use Selector
-    interface Selector extends Message<Selector> { }
+    interface Selector extends Message<String> { }
 }
