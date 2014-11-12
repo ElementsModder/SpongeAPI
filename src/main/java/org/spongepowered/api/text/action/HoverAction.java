@@ -26,8 +26,7 @@ package org.spongepowered.api.text.action;
 
 import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.item.ItemType;
-
-import java.util.UUID;
+import org.spongepowered.api.text.Message;
 
 public class HoverAction<R> extends TextAction<R> {
 
@@ -35,9 +34,9 @@ public class HoverAction<R> extends TextAction<R> {
         super(id, result);
     }
 
-    public static class ShowText extends HoverAction<String> {
+    public static class ShowText extends HoverAction<Message<?>> {
 
-        ShowText(String result) {
+        ShowText(Message<?> result) {
             super("show_text", result);
         }
     }
