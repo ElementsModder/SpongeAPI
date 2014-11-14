@@ -48,8 +48,8 @@ public interface MessageBuilder<T> {
 
     MessageBuilder onHover(HoverAction<?> action);
 
-    MessageBuilder append(Iterable<Message<?>> child);
+    MessageBuilder add(Iterable<Message<?>> child);
 
-    MessageBuilder append(Message<?>... child);
+    MessageBuilder add(Message<?>... child);
 
 }
