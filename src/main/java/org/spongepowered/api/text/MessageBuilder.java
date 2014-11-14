@@ -26,8 +26,9 @@ package org.spongepowered.api.text;
 
 import org.spongepowered.api.text.action.ClickAction;
 import org.spongepowered.api.text.action.HoverAction;
-import org.spongepowered.api.text.style.FormattingCode;
-import org.spongepowered.api.text.style.TextStyle;
+import org.spongepowered.api.text.format.FormattingCode;
+import org.spongepowered.api.text.format.TextColor;
+import org.spongepowered.api.text.format.TextStyle;
 import org.spongepowered.api.text.translation.Translatable;
 import org.spongepowered.api.text.translation.Translation;
 
@@ -35,33 +36,25 @@ public interface MessageBuilder<T> {
 
     Message<T> build(); // TODO
 
-    MessageBuilder<T> content(T text);
+    MessageBuilder<T> content(T content);
 
-    interface VisibleMessageBuilder<T> extends MessageBuilder<T> {
+    MessageBuilder<T> color(TextColor color);
 
-        MessageBuilder<T> format(TextStyle format);
+    MessageBuilder<T> style(TextStyle style);
 
-        MessageBuilder<T> color(FormattingCode style);
+    MessageBuilder<T> insertion(String insertion);
 
-        MessageBuilder<T> insertion(String insertion);
+    MessageBuilder onClick(ClickAction<?> action);
 
-        MessageBuilder onClick(ClickAction<?> action);
+    MessageBuilder onHover(HoverAction<?> action);
 
-        MessageBuilder onHover(HoverAction<?> action);
+    TextMessageBuilder add(Iterable<Message<String>> child);
 
-    }
+    TextMessageBuilder add(Message<?>... child);
 
-    interface TextMessageBuilder extends VisibleMessageBuilder<String> {
+    interface TextMessageBuilder extends MessageBuilder<String> { }
 
-        TextMessageBuilder add(Iterable<Message<String>> child);
-
-        TextMessageBuilder add(Message<?>... child);
-
-    }
-
-    interface TranslatableMessageBuilder extends VisibleMessageBuilder<Translatable> {
-
-        TranslatableMessageBuilder translation(Translation translation);
+    interface TranslatableMessageBuilder extends MessageBuilder<Translatable> {
 
         TranslatableMessageBuilder arg(Message<?>... arg);
 
@@ -76,7 +69,8 @@ public interface MessageBuilder<T> {
 
     }
 
-    interface SelectorMessageBuilder extends VisibleMessageBuilder<Object> {
+    // TODO selector API
+    interface SelectorMessageBuilder extends MessageBuilder<Object> {
 
     }
 

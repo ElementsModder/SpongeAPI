@@ -27,9 +27,8 @@ package org.spongepowered.api.text;
 import com.google.common.base.Optional;
 import org.spongepowered.api.text.action.ClickAction;
 import org.spongepowered.api.text.action.HoverAction;
-import org.spongepowered.api.text.style.FormattingCode;
-import org.spongepowered.api.text.style.TextStyle;
-import org.spongepowered.api.text.style.TextColor;
+import org.spongepowered.api.text.format.TextStyle;
+import org.spongepowered.api.text.format.TextColor;
 import org.spongepowered.api.text.translation.Translation;
 
 import java.util.List;
@@ -37,30 +36,23 @@ import java.util.List;
 public interface Message<T> extends Iterable<Message<T>> {
 
     T getContent();
+
     TextColor getColor();
-    FormattingCode getStyle();
+    TextStyle getStyle();
 
-    interface VisibleMessage<T> extends Message<T> {
+    List<Message<?>> getChildren();
 
-        TextStyle getFormat();
+    Optional<String> getInsertion();
 
-        TextColor getColor();
+    Optional<ClickAction<?>> getClickAction();
+    Optional<HoverAction<?>> getHoverAction();
 
-        List<Message<?>> getChildren();
+    interface Text extends Message<String> { }
 
-        Optional<String> getInsertion();
-
-        Optional<ClickAction<?>> getClickAction();
-        Optional<HoverAction<?>> getHoverAction();
-
-    }
-
-    interface Text extends VisibleMessage<String> { }
-
-    interface Translatable extends VisibleMessage<Translation> { }
+    interface Translatable extends Message<Translation> { }
 
     // TODO use Selector
-    interface Selector extends VisibleMessage<String> { }
+    interface Selector extends Message<String> { }
 
     // TODO use Score
     // should this REALLY be a message? it's so different

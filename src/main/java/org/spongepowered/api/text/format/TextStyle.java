@@ -1,4 +1,4 @@
-package org.spongepowered.api.text.style;
+package org.spongepowered.api.text.format;
 
 public interface TextStyle {
 
