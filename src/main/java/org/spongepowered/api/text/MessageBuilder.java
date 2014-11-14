@@ -26,7 +26,7 @@ package org.spongepowered.api.text;
 
 import org.spongepowered.api.text.action.ClickAction;
 import org.spongepowered.api.text.action.HoverAction;
-import org.spongepowered.api.text.style.TextFormat;
+import org.spongepowered.api.text.style.FormattingCode;
 import org.spongepowered.api.text.style.TextStyle;
 import org.spongepowered.api.text.translation.Translatable;
 import org.spongepowered.api.text.translation.Translation;
@@ -39,15 +39,16 @@ public interface MessageBuilder<T> {
 
     interface VisibleMessageBuilder<T> extends MessageBuilder<T> {
 
-        MessageBuilder<T> format(TextFormat format);
+        MessageBuilder<T> format(TextStyle format);
 
-        MessageBuilder<T> color(TextStyle style);
+        MessageBuilder<T> color(FormattingCode style);
 
         MessageBuilder<T> insertion(String insertion);
 
-        <V> MessageBuilder<T> clickAction(ClickAction<V> clickAction);
+        MessageBuilder onClick(ClickAction<?> action);
 
-        <V> MessageBuilder<T> hoverAction(HoverAction<V> hoverAction);
+        MessageBuilder onHover(HoverAction<?> action);
+
     }
 
     interface TextMessageBuilder extends VisibleMessageBuilder<String> {

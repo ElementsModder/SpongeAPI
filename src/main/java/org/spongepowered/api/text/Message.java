@@ -27,7 +27,8 @@ package org.spongepowered.api.text;
 import com.google.common.base.Optional;
 import org.spongepowered.api.text.action.ClickAction;
 import org.spongepowered.api.text.action.HoverAction;
-import org.spongepowered.api.text.style.TextFormat;
+import org.spongepowered.api.text.style.FormattingCode;
+import org.spongepowered.api.text.style.TextStyle;
 import org.spongepowered.api.text.style.TextColor;
 import org.spongepowered.api.text.translation.Translation;
 
@@ -36,10 +37,12 @@ import java.util.List;
 public interface Message<T> extends Iterable<Message<T>> {
 
     T getContent();
+    TextColor getColor();
+    FormattingCode getStyle();
 
     interface VisibleMessage<T> extends Message<T> {
 
-        TextFormat getFormat();
+        TextStyle getFormat();
 
         TextColor getColor();
 

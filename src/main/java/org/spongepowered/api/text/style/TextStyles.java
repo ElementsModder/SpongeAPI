@@ -24,33 +24,14 @@
  */
 package org.spongepowered.api.text.style;
 
-import com.google.common.base.Optional;
+public class TextStyles {
 
-import java.util.Collection;
+    public static final TextStyle.Base OBFUSCATED = null;
+    public static final TextStyle.Base BOLD = null;
+    public static final TextStyle.Base STRIKETHROUGH = null;
+    public static final TextStyle.Base UNDERLINE = null;
+    public static final TextStyle.Base ITALIC = null;
 
-public interface TextFormat {
-
-    boolean isComposite();
-
-    TextFormat and(TextFormat that);
-
-    TextFormat andNot(TextFormat that);
-
-    TextFormat negate();
-
-    boolean is(TextFormat style);
-
-    /**
-     * Gets a list of Minecraft formatting codes that, when put together
-     * and applied, have the same effect as this TextFormat.
-     *
-     * @return a List of Minecraft formatting codes
-     */
-    @Deprecated
-    Optional<Collection<Character>> getCodes();
-
-    interface Base extends TextFormat, TextStyle {
-
-    }
+    public static final TextStyle.Base RESET = null;
 
 }

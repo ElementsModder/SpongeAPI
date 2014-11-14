@@ -1,8 +1,7 @@
 package org.spongepowered.api.text.style;
-
 import com.google.common.base.Optional;
 
-public interface TextStyle {
+public interface FormattingCode {
 
     String getName();
 
