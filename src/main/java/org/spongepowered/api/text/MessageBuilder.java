@@ -48,31 +48,8 @@ public interface MessageBuilder<T> {
 
     MessageBuilder onHover(HoverAction<?> action);
 
-    TextMessageBuilder add(Iterable<Message<String>> child);
+    MessageBuilder append(Iterable<Message<?>> child);
 
-    TextMessageBuilder add(Message<?>... child);
-
-    interface TextMessageBuilder extends MessageBuilder<String> { }
-
-    interface TranslatableMessageBuilder extends MessageBuilder<Translatable> {
-
-        TranslatableMessageBuilder arg(Message<?>... arg);
-
-        TranslatableMessageBuilder arg(Iterable<Message<?>> arg);
-
-    }
-
-    // TODO score api
-    interface ScoreMessageBuilder extends MessageBuilder<Object> {
-
-        ScoreMessageBuilder override(Object score, String value);
-
-    }
-
-    // TODO selector API
-    interface SelectorMessageBuilder extends MessageBuilder<Object> {
-
-    }
-
+    MessageBuilder append(Message<?>... child);
 
 }
